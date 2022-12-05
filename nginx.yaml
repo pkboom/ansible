@@ -1,10 +1,6 @@
-# ansible-playbook nginx.yml
-# ansible-playbook -s -k -u vagrant nginx.yml
-# -s: use sudo
-
 - hosts: local
-  # if sudo is specified here, you can omit -s in a command.
-  # $ ansible-playbook nginx.yml
+  # if sudo is specified here, you can omit -s in your command.
+  # e.g. ansible-playbook nginx.yml
   sudo: "yes"
   vars:
     - docroot: /var/www/serversforhackers.com/public

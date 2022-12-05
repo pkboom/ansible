@@ -6,6 +6,15 @@ sudo apt update
 sudo apt install -y ansible
 ```
 
+# Define servers
+
+```
+# /etc/ansible/hosts
+[web]
+192.168.22.10
+192.168.22.11
+```
+
 # Commands
 
 ```sh
@@ -31,13 +40,4 @@ ansible web -s -m apt -a 'pkg=nginx state=installed update_cache=true'
 ```sh
 ansible-playbook nginx.yml
 ansible-playbook -s -k -u vagrant nginx.yml
-```
-
-# Define servers
-
-```
-# /etc/ansible/hosts
-[web]
-192.168.22.10
-192.168.22.11
 ```
