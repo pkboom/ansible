@@ -1,0 +1,36 @@
+# ansible-playbook nginx.yml
+# ansible-playbook -s -k -u vagrant nginx.yml
+# -s: use sudo
+
+- hosts: local
+  # if sudo is specified here, you can omit -s in a command.
+  # $ ansible-playbook nginx.yml
+  sudo: "yes"
+  vars:
+    - docroot: /var/www/serversforhackers.com/public
+  tasks:
+    - name: Add Nginx Repository
+      # use apt_repository module
+      apt_repository: "repo='ppa:nginx/stable' state=present"
+      register: ppastable
+    - name: Install Nginx
+      # use apt module
+      apt: pkg=nginx state=installed update_cache=true
+      # only if ppastable is successful, run
+      when: ppastable|success
+      register: nginxinstalled
+      notify:
+        - Start Nginx
+    - name: Create Web Root
+      when: nginxinstalled|success
+      # use file module to create a directory
+      file: dest={{ docroot }} mode=775 state=directory owner=www-data group=www-data
+      notify:
+        - Reload Nginx
+  handlers:
+    # If Install Nginx is not run, this will never be triggered
+    - name: Start Nginx
+      # use service module
+      service: name=nginx state=started
+    - name: Reload Nginx
+      service: name=nginx state=reloaded
