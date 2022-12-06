@@ -1,3 +1,4 @@
+---
 - hosts: local
   # if sudo is specified here, you can omit -s in your command.
   # e.g. ansible-playbook nginx.yml

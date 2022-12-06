@@ -1,0 +1,14 @@
+# Contains Role meta data, including dependencies.
+# Nginx Role depends on the SSL Role,
+# which installs SSL certificates.
+# If you called the “nginx” Role,
+# it would attempt to first run the “ssl” Role.
+# Otherwise we can omit this file, or
+# define the Role as having no dependencies:
+# e.g.
+# ---
+# dependencies: []
+
+---
+dependencies:
+  - { role: ssl }
