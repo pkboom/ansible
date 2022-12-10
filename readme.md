@@ -40,3 +40,11 @@ ansible web -s -m apt -a 'pkg=nginx state=installed update_cache=true'
 ## Files
 
 we can add files that we’ll want copied into our servers.
+
+# Ansible File Structure
+
+## defaults vs vars
+
+The priority of the vars is higher than that of defaults.
+
+The static variables should be placed in default and the dynamic should be placed in vars.
