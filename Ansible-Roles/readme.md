@@ -24,8 +24,7 @@ Ansible facts all start with `anisble_` and are globally available for use any p
 
 # Ansible Vault
 
-Vault allows you to encrypt any Yaml file, which typically boil down to our Variable files. Vault will
-not encrypt Files and Templates.
+Vault allows you to encrypt any Yaml file, which typically boil down to our Variable files. Vault will not encrypt Files and Templates.
 
 ```sh
 # create a new Variable file:
