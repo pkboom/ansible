@@ -37,7 +37,7 @@ ansible web -s -m apt -a 'pkg=nginx state=installed update_cache=true'
 
 # Run playbook
 
-## Files
+## Files folder
 
 we can add files that we’ll want copied into our servers.
 
